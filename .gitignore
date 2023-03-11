@@ -1,0 +1,3 @@
+*.o
+impl/pnr/*
+impl/gwsynthesis/*

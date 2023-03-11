@@ -1,0 +1,24 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW1NR-9C" pn="GW1NR-LV9QN88PC6/I5">gw1nr9c-004</Device>
+    <FileList>
+        <File path="src/audio_clock_regeneration_packet.sv" type="file.verilog" enable="1"/>
+        <File path="src/audio_info_frame.sv" type="file.verilog" enable="1"/>
+        <File path="src/audio_sample_packet.sv" type="file.verilog" enable="1"/>
+        <File path="src/auxiliary_video_information_info_frame.sv" type="file.verilog" enable="1"/>
+        <File path="src/gowin_clkdiv/gowin_clkdiv.v" type="file.verilog" enable="1"/>
+        <File path="src/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/hdmi.sv" type="file.verilog" enable="1"/>
+        <File path="src/packet_assembler.sv" type="file.verilog" enable="1"/>
+        <File path="src/packet_picker.sv" type="file.verilog" enable="1"/>
+        <File path="src/serializer.sv" type="file.verilog" enable="1"/>
+        <File path="src/source_product_description_info_frame.sv" type="file.verilog" enable="1"/>
+        <File path="src/tmds_channel.sv" type="file.verilog" enable="1"/>
+        <File path="top/top.sv" type="file.verilog" enable="1"/>
+        <File path="src/02_FPGA.cst" type="file.cst" enable="1"/>
+        <File path="src/02_FPGA.rao" type="file.gao" enable="0"/>
+    </FileList>
+</Project>
