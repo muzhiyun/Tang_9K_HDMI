@@ -4,11 +4,17 @@ Thanks Sameer Puri for the work on hdl-util/hdmi.
 
 ## Reference
 https://github.com/hdl-util/hdmi
+
 https://purisa.me/blog/hdmi-released/
+
 https://purisa.me/blog/hdmi-on-fpga/
+
 https://www.fpga4fun.com/HDMI.html
+
 https://glenwing.github.io/docs/
+
 https://www.cta.tech/SearchResults?search=CTA-861-
+
 
 
 ## Documents
