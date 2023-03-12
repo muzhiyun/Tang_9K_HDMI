@@ -1,3 +1,4 @@
 *.o
 impl/pnr/*
 impl/gwsynthesis/*
+impl/temp/*
