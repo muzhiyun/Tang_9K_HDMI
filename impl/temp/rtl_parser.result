@@ -9,7 +9,7 @@
   "SubInsts" : [
    {
     "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/top/top.sv",
-    "InstLine" : 34,
+    "InstLine" : 33,
     "InstName" : "u_pll",
     "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/gowin_rpll/gowin_rpll.v",
     "ModuleLine" : 9,
@@ -17,7 +17,7 @@
    },
    {
     "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/top/top.sv",
-    "InstLine" : 39,
+    "InstLine" : 38,
     "InstName" : "u_div_5",
     "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/gowin_clkdiv/gowin_clkdiv.v",
     "ModuleLine" : 9,
@@ -25,7 +25,7 @@
    },
    {
     "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/top/top.sv",
-    "InstLine" : 94,
+    "InstLine" : 141,
     "InstName" : "hdmi",
     "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/hdmi.sv",
     "ModuleLine" : 4,
