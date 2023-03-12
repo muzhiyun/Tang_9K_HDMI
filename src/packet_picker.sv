@@ -21,7 +21,7 @@ module packet_picker
     input logic [4:0] packet_pixel_counter,
     input logic [AUDIO_BIT_WIDTH-1:0] audio_sample_word [1:0],
     output logic [23:0] header,
-    output logic [55:0] sub [3:0]
+    output logic [55:0] sub [5:0]
 );
 
 // Connect the current packet type's data to the output.
@@ -33,17 +33,21 @@ assign sub[0] = subs[packet_type][0];
 assign sub[1] = subs[packet_type][1];
 assign sub[2] = subs[packet_type][2];
 assign sub[3] = subs[packet_type][3];
+//assign sub[4] = subs[packet_type][4]; //emp
+//assign sub[5] = subs[packet_type][5]; //vsif
 
 // NULL packet
 // "An HDMI Sink shall ignore bytes HB1 and HB2 of the Null Packet Header and all bytes of the Null Packet Body."
 `ifdef MODEL_TECH
-assign headers[0] = {8'd0, 8'd0, 8'd0}; assign subs[0] = '{56'd0, 56'd0, 56'd0, 56'd0};
+assign headers[0] = {8'd0, 8'd0, 8'd0 ,8'd0, 8'd0}; assign subs[0] = '{56'd0, 56'd0, 56'd0, 56'd0};
 `else
 assign headers[0] = {8'dX, 8'dX, 8'd0};
 assign subs[0][0] = 56'dX;
 assign subs[0][1] = 56'dX;
 assign subs[0][2] = 56'dX;
 assign subs[0][3] = 56'dX;
+//assign subs[0][4] = 56'dX;
+//assign subs[0][5] = 56'dX;
 `endif
 
 // Audio Clock Regeneration Packet
@@ -142,11 +146,16 @@ source_product_description_info_frame #(.VENDOR_NAME(VENDOR_NAME), .PRODUCT_DESC
 
 audio_info_frame audio_info_frame(.header(headers[132]), .sub(subs[132]));
 
+extended_metadata_packet extended_metadata_packet(.header(headers[127]), .sub(subs[127]));
+
+vendor_specific_infoframe vendor_specific_infoframe(.header(headers[129]), .sub(subs[129]));
 
 // "A Source shall always transmit... [an InfoFrame] at least once per two Video Fields"
 logic audio_info_frame_sent = 1'b0;
 logic auxiliary_video_information_info_frame_sent = 1'b0;
 logic source_product_description_info_frame_sent = 1'b0;
+logic extended_metadata_packet_sent = 1'b0;
+logic vendor_specific_infoframe_sent = 1'b0;
 logic last_clk_audio_counter_wrap = 1'b0;
 always_ff @(posedge clk_pixel)
 begin
@@ -158,6 +167,8 @@ begin
         audio_info_frame_sent <= 1'b0;
         auxiliary_video_information_info_frame_sent <= 1'b0;
         source_product_description_info_frame_sent <= 1'b0;
+        extended_metadata_packet_sent <= 1'b0;
+        vendor_specific_infoframe_sent <= 1'b0;
         packet_type <= 8'dx;
     end
     else if (packet_enable)
@@ -188,6 +199,16 @@ begin
         begin
             packet_type <= 8'h83;
             source_product_description_info_frame_sent <= 1'b1;
+        end
+        else if (!extended_metadata_packet_sent)
+        begin
+            packet_type <= 8'h7f;
+            extended_metadata_packet_sent <= 1'b1;
+        end
+        else if (!vendor_specific_infoframe_sent)
+        begin
+            packet_type <= 8'h81;
+            vendor_specific_infoframe_sent <= 1'b1;
         end
         else
             packet_type <= 8'd0;

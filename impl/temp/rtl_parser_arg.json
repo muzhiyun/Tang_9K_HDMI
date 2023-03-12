@@ -51,6 +51,14 @@
   {
    "Path" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/top/top.sv",
    "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/vendor_specific_infoframe.sv",
+   "Type" : "verilog"
+  },
+  {
+   "Path" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/extended_metadata_packet.sv",
+   "Type" : "verilog"
   }
  ],
  "IncludePath" : [

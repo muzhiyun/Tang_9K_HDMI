@@ -41,7 +41,7 @@
       "SubInsts" : [
        {
         "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
-        "InstLine" : 51,
+        "InstLine" : 55,
         "InstName" : "audio_clock_regeneration_packet",
         "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/audio_clock_regeneration_packet.sv",
         "ModuleLine" : 5,
@@ -49,7 +49,7 @@
        },
        {
         "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
-        "InstLine" : 131,
+        "InstLine" : 135,
         "InstName" : "audio_sample_packet",
         "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/audio_sample_packet.sv",
         "ModuleLine" : 8,
@@ -57,7 +57,7 @@
        },
        {
         "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
-        "InstLine" : 137,
+        "InstLine" : 141,
         "InstName" : "auxiliary_video_information_info_frame",
         "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/auxiliary_video_information_info_frame.sv",
         "ModuleLine" : 5,
@@ -65,7 +65,7 @@
        },
        {
         "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
-        "InstLine" : 140,
+        "InstLine" : 144,
         "InstName" : "source_product_description_info_frame",
         "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/source_product_description_info_frame.sv",
         "ModuleLine" : 5,
@@ -73,11 +73,27 @@
        },
        {
         "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
-        "InstLine" : 143,
+        "InstLine" : 147,
         "InstName" : "audio_info_frame",
         "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/audio_info_frame.sv",
         "ModuleLine" : 5,
         "ModuleName" : "audio_info_frame"
+       },
+       {
+        "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
+        "InstLine" : 149,
+        "InstName" : "extended_metadata_packet",
+        "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/extended_metadata_packet.sv",
+        "ModuleLine" : 5,
+        "ModuleName" : "extended_metadata_packet"
+       },
+       {
+        "InstFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/packet_picker.sv",
+        "InstLine" : 151,
+        "InstName" : "vendor_specific_infoframe",
+        "ModuleFile" : "C:/Users/MuZhi/Documents/fpga_project/02_FPGA/src/vendor_specific_infoframe.sv",
+        "ModuleLine" : 5,
+        "ModuleName" : "vendor_specific_infoframe"
        }
       ]
      },
