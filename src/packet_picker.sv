@@ -21,7 +21,7 @@ module packet_picker
     input logic [4:0] packet_pixel_counter,
     input logic [AUDIO_BIT_WIDTH-1:0] audio_sample_word [1:0],
     output logic [23:0] header,
-    output logic [55:0] sub [5:0]
+    output logic [55:0] sub [3:0]
 );
 
 // Connect the current packet type's data to the output.

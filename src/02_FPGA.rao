@@ -6,11 +6,6 @@
         <SignalList>
             <Signal>clk_pixel</Signal>
             <Signal>clk_pixel_x5</Signal>
-            <Bus name="led2[2:0]">
-                <Signal>led2[2]</Signal>
-                <Signal>led2[1]</Signal>
-                <Signal>led2[0]</Signal>
-            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
@@ -56,5 +51,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0110100110001010</GAO_ID>
+    <GAO_ID>0010011111110100</GAO_ID>
 </GAO_CONFIG>

@@ -125,14 +125,14 @@ logic [23:0] rgb = 24'hff0000;   //24'hffffff;   // R G B
 
 //Video Test Pattern
 // Border test (left = red, top = green, right = blue, bottom = blue, fill = black)
-always @(posedge clk_pixel)
+//always @(posedge clk_pixel)
 //  rgb <= {cx == 0 ? ~8'd0 : 8'd0, cy == 0 ? ~8'd0 : 8'd0, cx == screen_width - 1'd1 || cy == screen_width - 1'd1 ? ~8'd0 : 8'd0};
-    if (cy < 240 )
-       rgb = 24'hff0000;
-    else if (cy < 480 )
-       rgb = 24'h00ff00;
-    else
-       rgb = 24'h0000ff; 
+//    if (cy < 240 )
+//       rgb = 24'hff0000;
+//    else if (cy < 480 )
+//       rgb = 24'h00ff00;
+//    else
+//       rgb = 24'h0000ff; 
 
 
 

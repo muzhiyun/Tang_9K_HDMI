@@ -297,7 +297,7 @@ generate
 
         // See Section 5.2.3.4
         logic [23:0] header;
-        logic [55:0] sub [5:0];
+        logic [55:0] sub [3:0];
         logic video_field_end;
         assign video_field_end = cx == screen_width - 1'b1 && cy == screen_height - 1'b1;
         logic [4:0] packet_pixel_counter;
