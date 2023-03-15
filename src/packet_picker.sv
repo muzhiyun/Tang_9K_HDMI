@@ -29,25 +29,21 @@ logic [7:0] packet_type = 8'd0;
 logic [23:0] headers [255:0];
 logic [55:0] subs [255:0] [3:0];
 assign header = headers[packet_type];
-assign sub[0] = subs[packet_type][0];  //aui
-assign sub[1] = subs[packet_type][1];   //asample
-assign sub[2] = subs[packet_type][2];   //spd
-assign sub[3] = subs[packet_type][3];   //avi
-//assign sub[4] = subs[packet_type][4]; //emp
-//assign sub[5] = subs[packet_type][5]; //vsif
+assign sub[0] = subs[packet_type][0];
+assign sub[1] = subs[packet_type][1];
+assign sub[2] = subs[packet_type][2];
+assign sub[3] = subs[packet_type][3];
 
 // NULL packet
 // "An HDMI Sink shall ignore bytes HB1 and HB2 of the Null Packet Header and all bytes of the Null Packet Body."
 `ifdef MODEL_TECH
-assign headers[0] = {8'd0, 8'd0, 8'd0 ,8'd0, 8'd0}; assign subs[0] = '{56'd0, 56'd0, 56'd0, 56'd0};
+assign headers[0] = {8'd0, 8'd0, 8'd0}; assign subs[0] = '{56'd0, 56'd0, 56'd0, 56'd0};
 `else
 assign headers[0] = {8'dX, 8'dX, 8'd0};
 assign subs[0][0] = 56'dX;
 assign subs[0][1] = 56'dX;
 assign subs[0][2] = 56'dX;
 assign subs[0][3] = 56'dX;
-//assign subs[0][4] = 56'dX;
-//assign subs[0][5] = 56'dX;
 `endif
 
 // Audio Clock Regeneration Packet
