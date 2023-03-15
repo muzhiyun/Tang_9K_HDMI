@@ -15,7 +15,7 @@ module source_product_description_info_frame
 
 localparam bit [4:0] LENGTH = 5'd25;
 localparam bit [7:0] VERSION = 8'd1;
-localparam bit [6:0] TYPE = 7'd9;
+localparam bit [6:0] TYPE = 7'd3;
 
 assign header = {{3'b0, LENGTH}, VERSION, {1'b1, TYPE}};
 

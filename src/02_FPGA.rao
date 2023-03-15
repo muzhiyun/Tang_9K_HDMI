@@ -2,15 +2,59 @@
 <GAO_CONFIG>
     <Version>3.0</Version>
     <Mode>Standard</Mode>
-    <AoCore index="0" sample_clock="clk_pixel_x5" trig_type="0" storage_depth="8192" window_num="1" capture_amount="8192" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false">
+    <AoCore index="0" sample_clock="clk_pixel" trig_type="0" storage_depth="8192" window_num="1" capture_amount="8192" trigger_pos="0" module_name="top" force_trigger_by_falling_edge="false">
         <SignalList>
-            <Signal>clk_pixel</Signal>
-            <Signal>clk_pixel_x5</Signal>
+            <Bus name="hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[23:0]">
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[23]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[22]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[21]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[20]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[19]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[18]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[17]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[16]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[15]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[14]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[13]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[12]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[11]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[10]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[9]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[8]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[7]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[6]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[5]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[4]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[3]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[2]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[1]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/header[0]</Signal>
+            </Bus>
+            <Bus name="hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][7:0]">
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][7]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][6]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][5]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][4]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][3]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][2]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][1]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[1][0]</Signal>
+            </Bus>
+            <Bus name="hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][7:0]">
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][7]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][6]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][5]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][4]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][3]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][2]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][1]</Signal>
+                <Signal>hdmi/true_hdmi_output.packet_picker/vendor_specific_infoframe/packet_bytes[0][0]</Signal>
+            </Bus>
         </SignalList>
         <Triggers>
             <Trigger index="0">
                 <SignalList>
-                    <Signal>sys_clk</Signal>
+                    <Signal>clk_pixel</Signal>
                 </SignalList>
             </Trigger>
             <Trigger index="1"/>
@@ -30,7 +74,7 @@
             <Trigger index="15"/>
         </Triggers>
         <MatchUnits>
-            <MatchUnit index="0" enabled="1" match_type="5" counter_enable="1" counter_width="2" counter="2" countinuous="0" func="0" value0="0" value1="0" trigger="0"/>
+            <MatchUnit index="0" enabled="1" match_type="5" counter_enable="1" counter_width="2" counter="4" countinuous="0" func="0" value0="0" value1="0" trigger="0"/>
             <MatchUnit index="1" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="2" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
             <MatchUnit index="3" enabled="0" match_type="0" counter_enable="0" counter_width="2" counter="2" countinuous="0" func="0" value0="" value1=""/>
@@ -51,5 +95,5 @@
             <Expression>M0</Expression>
         </Expressions>
     </AoCore>
-    <GAO_ID>0010011111110100</GAO_ID>
+    <GAO_ID>1010111110111010</GAO_ID>
 </GAO_CONFIG>

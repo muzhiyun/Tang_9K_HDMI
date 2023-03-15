@@ -42,40 +42,40 @@ Gowin_CLKDIV u_div_5(
 );
 
 /********************************Test CLK Start****************************************/
-reg [32:0] cnt_clk;              
-reg [32:0] cnt_pixel;  
-reg [32:0] cnt_pixel5 = 0;              
+//reg [32:0] cnt_clk;              
+//reg [32:0] cnt_pixel;  
+//reg [32:0] cnt_pixel5 = 0;              
 
 //assign led[0] = (cnt_clk < 26'd500) ? 1'b1 : 1'b0;
-assign led[1] = (cnt_pixel < 26'd500) ? 1'b1 : 1'b0;
-assign led[2] = (cnt_pixel5 < 26'd500) ? 1'b0 : 1'b1;
+//assign led[1] = (cnt_pixel < 26'd500) ? 1'b1 : 1'b0;
+//assign led[2] = (cnt_pixel5 < 26'd500) ? 1'b0 : 1'b1;
 
 
-always @ (posedge sys_clk or negedge sys_resetn) begin
-    if(!sys_resetn)                  
-        cnt_clk <=26'd0;
-    else if(cnt_clk < 26'd1000)
-        cnt_clk <= cnt_clk + 1'b1;    
-    else
-        cnt_clk <= 26'd0;     
-end
+//always @ (posedge sys_clk or negedge sys_resetn) begin
+//    if(!sys_resetn)                  
+//        cnt_clk <=26'd0;
+//    else if(cnt_clk < 26'd1000)
+//        cnt_clk <= cnt_clk + 1'b1;    
+//    else
+//        cnt_clk <= 26'd0;     
+//end
 
-always @ (posedge clk_pixel or negedge sys_resetn) begin
-    if(!sys_resetn)                  
-        cnt_pixel <=26'd0;
-    else if(cnt_pixel < 26'd1000)
-        cnt_pixel <= cnt_pixel + 1'b1;      
-    else
-        cnt_pixel <= 26'd0;           
-end
+//always @ (posedge clk_pixel or negedge sys_resetn) begin
+//    if(!sys_resetn)                  
+//        cnt_pixel <=26'd0;
+//    else if(cnt_pixel < 26'd1000)
+//        cnt_pixel <= cnt_pixel + 1'b1;      
+//    else
+//        cnt_pixel <= 26'd0;           
+//end
 
 
-always @ (posedge clk_pixel_x5) begin
-    if(cnt_pixel5 < 26'd1000)
-        cnt_pixel5 <= cnt_pixel5 + 1'b1;      
-    else
-        cnt_pixel5 <= 26'd0;
-end
+//always @ (posedge clk_pixel_x5) begin
+//    if(cnt_pixel5 < 26'd1000)
+//        cnt_pixel5 <= cnt_pixel5 + 1'b1;      
+//    else
+//        cnt_pixel5 <= 26'd0;
+//end
 /********************************Test CLK End****************************************/
 
 // audio stuff
@@ -104,19 +104,19 @@ always @(posedge clk_audio)
 
 
 /********************************Test CLK Start****************************************/
-reg [32:0] cnt_audio_clk;  
+//reg [32:0] cnt_audio_clk;  
 
-assign led[3] = (cnt_audio_clk < 26'd500) ? 1'b0 : 1'b1;
+//assign led[3] = (cnt_audio_clk == 26'd0) ? 1'b0 : 1'b1;
 
 
-always @ (posedge clk_audio or negedge sys_resetn) begin
-    if(!sys_resetn)                  
-        cnt_audio_clk <=26'd0;
-    else if(cnt_audio_clk < 26'd1000)
-        cnt_audio_clk <= cnt_audio_clk + 1'b1;    
-    else
-        cnt_audio_clk <= 26'd0;     
-end
+//always @ (posedge clk_audio or negedge sys_resetn) begin
+//    if(!sys_resetn)                  
+//        cnt_audio_clk <=26'd0;
+//    else if(cnt_audio_clk == 26'd0)
+//        cnt_audio_clk <= cnt_audio_clk + 1'b1;    
+//    else
+//        cnt_audio_clk <= 26'd0;     
+//end
 /********************************Test CLK End****************************************/
 
 logic [9:0] cx, cy, screen_start_x, screen_start_y, frame_width, frame_height, screen_width, screen_height;
@@ -125,14 +125,14 @@ logic [23:0] rgb = 24'hff0000;   //24'hffffff;   // R G B
 
 //Video Test Pattern
 // Border test (left = red, top = green, right = blue, bottom = blue, fill = black)
-//always @(posedge clk_pixel)
+always @(posedge clk_pixel)
 //  rgb <= {cx == 0 ? ~8'd0 : 8'd0, cy == 0 ? ~8'd0 : 8'd0, cx == screen_width - 1'd1 || cy == screen_width - 1'd1 ? ~8'd0 : 8'd0};
-//    if (cy < 240 )
-//       rgb = 24'hff0000;
-//    else if (cy < 480 )
-//       rgb = 24'h00ff00;
-//    else
-//       rgb = 24'h0000ff; 
+    if (cy < 240 )
+       rgb = 24'hff0000;
+    else if (cy < 480 )
+       rgb = 24'h00ff00;
+    else
+       rgb = 24'h0000ff; 
 
 
 

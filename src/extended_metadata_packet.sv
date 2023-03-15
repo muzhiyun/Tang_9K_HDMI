@@ -3,22 +3,19 @@
 
 // See CEA-861-D Section 6.5 page 72 (84 in PDF)
 module extended_metadata_packet
-#(
-    parameter bit [8*8-1:0] VENDOR_NAME = 0,
-    parameter bit [8*16-1:0] PRODUCT_DESCRIPTION = 0,
-    parameter bit [7:0] SOURCE_DEVICE_INFORMATION = 0
-)
 (
     output logic [23:0] header,
     output logic [55:0] sub [3:0]
 );
-//HB 83 01 19 64
-//HB 7f c0 00 89
-localparam bit [4:0] LENGTH = 5'd0;      //5'd25=0x19 00
-localparam bit [7:0] VERSION = 8'd192;   //8'd1=0x01  c0
-localparam bit [6:0] TYPE = 7'd3;
+/*
+HB:  7f c0 00 89
+SP0: 84 00 01 00 01 00 04 43
+SP1: 01 00 00 00 00 00 00 bf
+SP2: 00 00 00 00 00 00 00 00
+SP3: 00 00 00 00 00 00 00 00
+*/
 
-assign header = {{3'b0, LENGTH}, VERSION, {1'b1, TYPE}};
+assign header = { 8'h00, 8'hc0, 8'h7f };
 
 // PB0-PB6 = sub0
 // PB7-13 =  sub1
@@ -26,11 +23,11 @@ assign header = {{3'b0, LENGTH}, VERSION, {1'b1, TYPE}};
 // PB21-27 = sub3
 logic [7:0] packet_bytes [27:0];
 
-assign packet_bytes[0] = 8'd1 + ~(header[23:16] + header[15:8] + header[7:0] + packet_bytes[24] + packet_bytes[23] + packet_bytes[22] + packet_bytes[21] + packet_bytes[20] + packet_bytes[19] + packet_bytes[18] + packet_bytes[17] + packet_bytes[16] + packet_bytes[15] + packet_bytes[14] + packet_bytes[13] + packet_bytes[12] + packet_bytes[11] + packet_bytes[10] + packet_bytes[9] + packet_bytes[8] + packet_bytes[7] + packet_bytes[6] + packet_bytes[5] + packet_bytes[4] + packet_bytes[3] + packet_bytes[2] + packet_bytes[1]);
+//assign packet_bytes[0] = 8'd1 + ~(header[23:16] + header[15:8] + header[7:0] + packet_bytes[25] + packet_bytes[24] + packet_bytes[23] + packet_bytes[22] + packet_bytes[21] + packet_bytes[20] + packet_bytes[19] + packet_bytes[18] + packet_bytes[17] + packet_bytes[16] + packet_bytes[15] + packet_bytes[14] + packet_bytes[13] + packet_bytes[12] + packet_bytes[11] + packet_bytes[10] + packet_bytes[9] + packet_bytes[8] + packet_bytes[7] + packet_bytes[6] + packet_bytes[5] + packet_bytes[4] + packet_bytes[3] + packet_bytes[2] + packet_bytes[1]);
 
 
-byte vendor_name [0:7];
-byte product_description [0:15];
+//byte vendor_name [0:7];
+//byte product_description [0:15];
 
 genvar i;
 generate
@@ -42,7 +39,34 @@ generate
 //    begin: product_to_bytes
 //        assign product_description[i] = PRODUCT_DESCRIPTION[(15-i+1)*8-1:(15-i)*8];
 //    end
-
+    assign packet_bytes[0] = 8'h84;
+    assign packet_bytes[1] = 8'h00;
+    assign packet_bytes[2] = 8'h01;
+    assign packet_bytes[3] = 8'h00;
+    assign packet_bytes[4] = 8'h01;
+    assign packet_bytes[5] = 8'h00;
+    assign packet_bytes[6] = 8'h04;
+    assign packet_bytes[7] = 8'h43;
+    assign packet_bytes[8] = 8'h01;
+    assign packet_bytes[9] = 8'h00;
+    assign packet_bytes[10] = 8'h00;
+    assign packet_bytes[11] = 8'h00;
+    assign packet_bytes[12] = 8'h00;
+    assign packet_bytes[13] = 8'h00;
+    assign packet_bytes[14] = 8'h00;
+    assign packet_bytes[15] = 8'hbf;
+    assign packet_bytes[16] = 8'h00;
+    assign packet_bytes[17] = 8'h00;
+    assign packet_bytes[18] = 8'h00;
+    assign packet_bytes[19] = 8'h00;
+    assign packet_bytes[20] = 8'h00;
+    assign packet_bytes[21] = 8'h00;
+    assign packet_bytes[22] = 8'h00;
+    assign packet_bytes[23] = 8'h00;
+    assign packet_bytes[24] = 8'h00;
+    assign packet_bytes[25] = 8'h00;
+    assign packet_bytes[26] = 8'h00;
+    assign packet_bytes[27] = 8'h00;
 //    for (i = 1; i < 9; i++)
 //    begin: pb_vendor
 //        assign packet_bytes[i] = vendor_name[i - 1] == 8'h30 ? 8'h00 : vendor_name[i - 1];
@@ -56,33 +80,6 @@ generate
 //    begin: pb_reserved
 //        assign packet_bytes[i] = 8'd0;
 //    end
-    assign packet_bytes[1] = 8'h84;
-    assign packet_bytes[2] = 8'h00;
-    assign packet_bytes[3] = 8'h01;
-    assign packet_bytes[4] = 8'h00;
-    assign packet_bytes[5] = 8'h01;
-    assign packet_bytes[6] = 8'h00;
-    assign packet_bytes[7] = 8'h04;
-    assign packet_bytes[8] = 8'h43;
-    assign packet_bytes[9] = 8'h01;
-    assign packet_bytes[10] = 8'h00;
-    assign packet_bytes[11] = 8'h00;
-    assign packet_bytes[12] = 8'h00;
-    assign packet_bytes[13] = 8'h00;
-    assign packet_bytes[14] = 8'h00;
-    assign packet_bytes[15] = 8'h00;
-    assign packet_bytes[16] = 8'hbf;
-    assign packet_bytes[17] = 8'h00;
-    assign packet_bytes[18] = 8'h00;
-    assign packet_bytes[19] = 8'h00;
-    assign packet_bytes[20] = 8'h00;
-    assign packet_bytes[21] = 8'h00;
-    assign packet_bytes[22] = 8'h00;
-    assign packet_bytes[23] = 8'h00;
-    assign packet_bytes[24] = 8'h00;
-    assign packet_bytes[25] = 8'h00;
-    assign packet_bytes[26] = 8'h00;
-    assign packet_bytes[27] = 8'h00;
     for (i = 0; i < 4; i++)
     begin: pb_to_sub
         assign sub[i] = {packet_bytes[6 + i*7], packet_bytes[5 + i*7], packet_bytes[4 + i*7], packet_bytes[3 + i*7], packet_bytes[2 + i*7], packet_bytes[1 + i*7], packet_bytes[0 + i*7]};
