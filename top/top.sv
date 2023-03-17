@@ -95,12 +95,12 @@ begin
     end
 end
 
-logic [15:0] audio_sample_word [1:0] = '{16'd0, 16'd0};
+logic [15:0] audio_sample_word [1:0] = '{16'h1111, 16'haaaa};
 
 //Audio Test Data
-always @(posedge clk_audio)
-  //audio_sample_word <= {16'haaaa,16'haaaa};
-  audio_sample_word <= '{audio_sample_word[1] + 16'h1111, audio_sample_word[0] - 16'h1111};
+//always @(posedge clk_audio)
+// audio_sample_word <= {16'haaaa,16'haaaa};
+//  audio_sample_word <= '{audio_sample_word[1] + 16'h1111, audio_sample_word[0] - 16'h1111};
 
 
 /********************************Test CLK Start****************************************/

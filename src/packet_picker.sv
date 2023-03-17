@@ -166,6 +166,7 @@ logic auxiliary_video_information_info_frame_sent = 1'b0;
 logic source_product_description_info_frame_sent = 1'b0;
 logic extended_metadata_packet_sent = 1'b0;
 logic vendor_specific_infoframe_sent = 1'b0;
+logic dynamic_range_and_mastering_sent = 1'b0;
 logic last_clk_audio_counter_wrap = 1'b0;
 always_ff @(posedge clk_pixel)
 begin
@@ -179,6 +180,7 @@ begin
         source_product_description_info_frame_sent <= 1'b0;
         extended_metadata_packet_sent <= 1'b0;
         vendor_specific_infoframe_sent <= 1'b0;
+        dynamic_range_and_mastering_sent <= 1'b0;
         packet_type <= 8'dx;
     end
     else if (packet_enable)
@@ -219,6 +221,11 @@ begin
         begin
             packet_type <= 8'h81;
             vendor_specific_infoframe_sent <= 1'b1;
+        end
+        else if (!dynamic_range_and_mastering_sent)
+        begin
+            packet_type <= 8'h87;
+            dynamic_range_and_mastering_sent <= 1'b1;
         end
         else
             packet_type <= 8'd0;
