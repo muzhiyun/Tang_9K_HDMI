@@ -21,4 +21,5 @@ https://www.cta.tech/SearchResults?search=CTA-861-
 * [HDMI Specification v1.4b](https://download.csdn.net/download/qq_38202538/85124051)
 * [HDMI Specification v2.1](https://download.csdn.net/download/zhulinxiaoxi2/85360416)
 * [IEC 60958-1](https://ia803003.us.archive.org/30/items/gov.in.is.iec.60958.1.2004/is.iec.60958.1.2004.pdf)
-* [IEC 60958-3](https://ia800905.us.archive.org/22/items/gov.in.is.iec.60958.3.2003/is.iec.60958.3.2003.pdf)
+* [IEC 60958-3:2003](https://ia800905.us.archive.org/22/items/gov.in.is.iec.60958.3.2003/is.iec.60958.3.2003.pdf)
+* [IEC 60958-3:2021](https://www.doc88.com/p-61799879064901.html)

@@ -151,12 +151,19 @@ source_product_description_info_frame #(.VENDOR_NAME(VENDOR_NAME),
 ) source_product_description_info_frame(.header(headers[131]), 
     .sub(subs[131]));
 
+source_product_description_info_frame_freesync #(.VENDOR_NAME(VENDOR_NAME), 
+    .PRODUCT_DESCRIPTION(PRODUCT_DESCRIPTION), 
+    .SOURCE_DEVICE_INFORMATION(SOURCE_DEVICE_INFORMATION)
+) source_product_description_info_frame_freesync(.header(headers[128]), 
+    .sub(subs[128]));
 
 audio_info_frame audio_info_frame(.header(headers[132]), .sub(subs[132]));
 
 extended_metadata_packet extended_metadata_packet(.header(headers[127]), .sub(subs[127]));
 
-vendor_specific_infoframe vendor_specific_infoframe(.header(headers[129]), .sub(subs[129]));
+vendor_specific_info_frame_dolbyvision vendor_specific_info_frame_dolbyvision(.header(headers[129]), .sub(subs[129]));
+
+vendor_specific_info_frame_allm vendor_specific_info_frame_allm(.header(headers[126]), .sub(subs[126]));
 
 dynamic_range_and_mastering dynamic_range_and_mastering(.header(headers[135]), .sub(subs[135]));
 
@@ -164,8 +171,10 @@ dynamic_range_and_mastering dynamic_range_and_mastering(.header(headers[135]), .
 logic audio_info_frame_sent = 1'b0;
 logic auxiliary_video_information_info_frame_sent = 1'b0;
 logic source_product_description_info_frame_sent = 1'b0;
+logic source_product_description_info_frame_freesync_sent = 1'b0;
 logic extended_metadata_packet_sent = 1'b0;
-logic vendor_specific_infoframe_sent = 1'b0;
+logic vendor_specific_info_frame_allm_sent = 1'b0;
+logic vendor_specific_info_frame_dolbyvison_sent = 1'b0;
 logic dynamic_range_and_mastering_sent = 1'b0;
 logic last_clk_audio_counter_wrap = 1'b0;
 always_ff @(posedge clk_pixel)
@@ -178,8 +187,10 @@ begin
         audio_info_frame_sent <= 1'b0;
         auxiliary_video_information_info_frame_sent <= 1'b0;
         source_product_description_info_frame_sent <= 1'b0;
+        source_product_description_info_frame_freesync_sent <= 1'b0;
         extended_metadata_packet_sent <= 1'b0;
-        vendor_specific_infoframe_sent <= 1'b0;
+        vendor_specific_info_frame_dolbyvison_sent <= 1'b0;
+        vendor_specific_info_frame_allm_sent <= 1'b0;
         dynamic_range_and_mastering_sent <= 1'b0;
         packet_type <= 8'dx;
     end
@@ -212,15 +223,25 @@ begin
             packet_type <= 8'h83;
             source_product_description_info_frame_sent <= 1'b1;
         end
+        else if (!source_product_description_info_frame_freesync_sent)
+        begin
+            packet_type <= 8'h83;
+            source_product_description_info_frame_freesync_sent <= 1'b1;
+        end
         else if (!extended_metadata_packet_sent)
         begin
             packet_type <= 8'h7f;
             extended_metadata_packet_sent <= 1'b1;
         end
-        else if (!vendor_specific_infoframe_sent)
+        else if (!vendor_specific_info_frame_dolbyvison_sent)
         begin
             packet_type <= 8'h81;
-            vendor_specific_infoframe_sent <= 1'b1;
+            vendor_specific_info_frame_dolbyvison_sent <= 1'b1;
+        end
+        else if (!vendor_specific_info_frame_allm_sent)
+        begin
+            packet_type <= 8'h81;
+            vendor_specific_info_frame_allm_sent <= 1'b1;
         end
         else if (!dynamic_range_and_mastering_sent)
         begin
